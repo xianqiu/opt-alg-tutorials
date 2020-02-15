@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bffceba5-63af-415c-b840-b1c89bc8b1a4" name="Default Changelist" comment="" />
+    <list default="true" id="bffceba5-63af-415c-b840-b1c89bc8b1a4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/opt-alg-tutoirals.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,32 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/math-prog/sudoku/model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
-              <folding>
-                <element signature="e#0#42#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/math-prog/sudoku/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -55,13 +37,7 @@
         <option value="$PROJECT_DIR$/math-prog/data.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/model.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -85,17 +61,6 @@
               <item name="opt-alg-tutoirals" type="b2602c69:ProjectViewProjectNode" />
               <item name="opt-alg-tutoirals" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="opt-alg-tutoirals" type="b2602c69:ProjectViewProjectNode" />
-              <item name="opt-alg-tutoirals" type="462c0819:PsiDirectoryNode" />
-              <item name="math-prog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="opt-alg-tutoirals" type="b2602c69:ProjectViewProjectNode" />
-              <item name="opt-alg-tutoirals" type="462c0819:PsiDirectoryNode" />
-              <item name="math-prog" type="462c0819:PsiDirectoryNode" />
-              <item name="sudoku" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -115,8 +80,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\xqiu\PycharmProjects\opt-alg-tutoirals\math-prog\sudoku" />
       <recent name="C:\Users\xqiu\PycharmProjects\opt-alg-tutoirals" />
+      <recent name="C:\Users\xqiu\PycharmProjects\opt-alg-tutoirals\math-prog\sudoku" />
       <recent name="C:\Users\xqiu\PycharmProjects\opt-alg-tutoirals\math-prog\transport" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -223,7 +188,7 @@
       <workItem from="1581764690935" duration="539000" />
       <workItem from="1581765453896" duration="398000" />
       <workItem from="1581765862554" duration="1045000" />
-      <workItem from="1581766918550" duration="8180000" />
+      <workItem from="1581766918550" duration="8435000" />
     </task>
     <task id="LOCAL-00001" summary="transport + sudoku">
       <created>1581774174233</created>
@@ -232,11 +197,18 @@
       <option name="project" value="LOCAL" />
       <updated>1581774174234</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="transport + sudoku">
+      <created>1581775290122</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1581775290122</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10162000" />
+    <option name="totallyTimeSpent" value="10417000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -336,9 +308,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/math-prog/sudoku/main.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/math-prog/sudoku/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
           <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
@@ -348,7 +327,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/math-prog/sudoku/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
+        <state relative-caret-position="349">
           <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
