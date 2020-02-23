@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bffceba5-63af-415c-b840-b1c89bc8b1a4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/math-prog/cutting-stock/cg_proc.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/math-prog/cutting-stock/data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/math-prog/cutting-stock/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/math-prog/cutting-stock/rouding_proc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/math-prog/cutting-stock/master_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/math-prog/cutting-stock/sub_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,7 +13,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/math-prog/cutting-stock/sub_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="65">
+              <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -77,6 +85,12 @@
               <item name="opt-alg-tutoirals" type="462c0819:PsiDirectoryNode" />
               <item name="math-prog" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="opt-alg-tutoirals" type="b2602c69:ProjectViewProjectNode" />
+              <item name="opt-alg-tutoirals" type="462c0819:PsiDirectoryNode" />
+              <item name="math-prog" type="462c0819:PsiDirectoryNode" />
+              <item name="cutting-stock" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -96,14 +110,15 @@
     <option name="mySupportQtDebugging" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\xqiu\PycharmProjects\opt-alg-tutoirals" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\xqiu\PycharmProjects\opt-alg-tutoirals\math-prog\cutting-stock" />
       <recent name="C:\Users\xqiu\PycharmProjects\opt-alg-tutoirals" />
       <recent name="C:\Users\xqiu\PycharmProjects\opt-alg-tutoirals\math-prog" />
       <recent name="C:\Users\xqiu\PycharmProjects\opt-alg-tutoirals\math-prog\sudoku" />
       <recent name="C:\Users\xqiu\PycharmProjects\opt-alg-tutoirals\math-prog\transport" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\xqiu\PycharmProjects\opt-alg-tutoirals" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -257,7 +272,7 @@
       <workItem from="1581866952098" duration="14000" />
       <workItem from="1582208628527" duration="1286000" />
       <workItem from="1582213310256" duration="3210000" />
-      <workItem from="1582445236379" duration="18945000" />
+      <workItem from="1582445236379" duration="19492000" />
     </task>
     <task id="LOCAL-00001" summary="transport + sudoku">
       <created>1581774174233</created>
@@ -280,11 +295,18 @@
       <option name="project" value="LOCAL" />
       <updated>1581775367445</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add cutting stock model">
+      <created>1582465901025</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1582465901025</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34021000" />
+    <option name="totallyTimeSpent" value="34568000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -326,7 +348,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="transport + sudoku" />
-    <option name="LAST_COMMIT_MESSAGE" value="transport + sudoku" />
+    <MESSAGE value="add cutting stock model" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cutting stock model" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/opt_alg_tutoirals$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1581773650021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -408,13 +431,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/math-prog/cutting-stock/sub_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/numpy/core/fromnumeric.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2556">
@@ -463,6 +479,13 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/math-prog/cutting-stock/sub_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
         </state>
       </provider>
     </entry>
