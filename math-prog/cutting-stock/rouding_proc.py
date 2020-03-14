@@ -6,10 +6,11 @@ class RoundingProc(object):
 
     def __init__(self, A, x, s, d, L):
         """
-        :param A: 切割方式对应的矩阵(每列代表一种切割方式)
-        :param x: 切割方式需要的原材料数量(fractional)
-        :param s: 成品材料的尺寸
-        :param d: 成品材料的尺寸对应的需求量
+        :param A: 可行切割矩阵(每列代表一种切割方式)(m*n维矩阵),
+                  其中m代表成品材料类型总数, n是我们考虑的可行切割方式的数量
+        :param x: 切割方式需要的原材料数量(fractional)(n维向量)
+        :param s: 成品材料的尺寸(m维向量)
+        :param d: 成品材料的尺寸对应的需求量(m维向量)
         :param L: 原材料的长度
         """
         self._A = np.array(A)
@@ -20,11 +21,13 @@ class RoundingProc(object):
         self._d0 = None  # 被满足的需求量
         self._d1 = None  # 未被满足的需求量
         self._greedy_x = None  # 贪心算法的结果: 对应满足d1的部分
-        self._greedy_matrix = None # 贪心算法的结果: 对应满足d1的部分
+        self._greedy_matrix = None  # 贪心算法的结果: 对应满足d1的部分
         self._solution_x = None  # 最终结果: 切割方式对应的数量
         self._solution_matrix = None  # 最终结果: 切割方式对应的矩阵
 
     def _round_down(self):
+        """ 把分数解self._x向下取整, 然后计算未被满足的需求量.
+        """
         self._x = list(map(int, self._x))
 
         # 计算被满足的需求量
@@ -62,8 +65,8 @@ class RoundingProc(object):
         return x, np.array(rows).transpose()
 
     def _greedy_cut(self, d1, sorted_indices):
-        """
-        :param d1: 代表未被满足的需求
+        """ 用贪心的方式切割1根原材料.
+        :param d1: 未被满足的需求
         :param sorted_indices: 成品材料的长度从大到小排序对应的indices
         :return: 切割方式,m维向量(m=成品材料的个数)
         """

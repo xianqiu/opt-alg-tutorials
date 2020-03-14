@@ -5,16 +5,20 @@ import numpy as np
 class MasterModel(object):
 
     def __init__(self, A, d):
+        """
+        :param A: 可行切割矩阵(每列代表一种切割方式)(m*n维矩阵),
+                  其中m代表成品材料类型总数, n是我们考虑的可行切割方式的数量
+        :param d: 成品材料的需求量(m维向量), m代表成品材料类型的总数
+        """
         self._solver = pywraplp.Solver('MasterModel',
                                        pywraplp.Solver.CLP_LINEAR_PROGRAMMING)
         self._A = A
         self._d = d
         self._x = None  # 决策变量
         self._m, self._n = np.array(self._A).shape
-        self._constraints = None  # 约束的集合(用来获取shadow price)
+        self._constraints = None  # 约束的集合(需要根据约束得到对偶变量, 别名shadow price)
         self._solution_x = None  # 计算结果
-        self._obj = None
-        self._la = None  # shadow price(m维向量)
+        self._sp = None  # shadow price(m维向量)
 
     def _init_decision_variables(self):
         self._x = [self._solver.NumVar(0, self._solver.Infinity(), "x[%d]" % j)
@@ -29,10 +33,10 @@ class MasterModel(object):
             self._constraints[i] = ct
 
     def _init_objective(self):
-        self._obj = self._solver.Objective()
+        obj = self._solver.Objective()
         for j in range(self._n):
-            self._obj.SetCoefficient(self._x[j], 1)
-        self._obj.SetMinimization()
+            obj.SetCoefficient(self._x[j], 1)
+        obj.SetMinimization()
 
     def solve(self):
         self._init_decision_variables()
@@ -40,19 +44,21 @@ class MasterModel(object):
         self._init_objective()
         self._solver.Solve()
         self._solution_x = [self._x[j].solution_value() for j in range(self._n)]
-        self._la = [self._constraints[i].dual_value() for i in range(self._m)]  # shadow price
-        self._obj = sum(self._solution_x)
+        # shadow price
+        self._sp = [self._constraints[i].dual_value() for i in range(self._m)]
 
     def print_info(self):
         print("[Master problem info]")
-        print(" - Objective value =", self._obj)
-        print(" - Shadow price: lambda = ", self._la)
+        print(" - Objective value =", self.get_objective_value())
+        print(" - Shadow price: lambda = ", self._sp)
 
-    def get_la(self):
-        return self._la
+    def get_sp(self):
+        """ 得到shadow price
+        """
+        return self._sp
 
     def get_solution(self):
         return self._solution_x
 
     def get_objective_value(self):
-        return self._obj
+        return sum(self._solution_x)

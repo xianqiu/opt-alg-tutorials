@@ -6,9 +6,9 @@ class TransportModel(object):
 
     def __init__(self, a, d, C):
         """
-        :param a: 供给量, array
-        :param d: 需求量, array
-        :param C: 单位运输成本, matrix
+        :param a: 供给量(m维向量), m代表仓库数量
+        :param d: 需求量(n维向量), n代表客户数量
+        :param C: 单位运输成本(m*n维矩阵), C[i][j]代表仓库i到客户j的单位运输成本
         """
         self._solver = pywraplp.Solver('TransportModel',
                                        pywraplp.Solver.GLOP_LINEAR_PROGRAMMING)
@@ -18,8 +18,8 @@ class TransportModel(object):
         self._m = len(self._a)  # 仓库数量
         self._n = len(self._d)  # 客户数量
         self._x = None  # 决策变量
-        self._solution_x = None  # x的计算结果
-        self._solution_value = None  # 最优解
+        self._solution_x = None  # 计算结果
+        self._obj_val = None  # 目标函数值
 
     def _init_decision_variables(self):
         self._x = [
@@ -60,9 +60,9 @@ class TransportModel(object):
             for i in range(self._m)
         ]
         # sum(C[i][i] * x[i][j]) over i,j
-        self._solution_value = np.sum(np.array(self._C) * np.array(self._solution_x))
+        self._obj_val = np.sum(np.array(self._C) * np.array(self._solution_x))
 
     def print_result(self):
-        print("最优值 = ", self._solution_value)
+        print("最优值 = ", self._obj_val)
         print("最优解 x = ")
         print(np.array(self._solution_x))

@@ -6,7 +6,7 @@ from rouding_proc import RoundingProc
 if __name__ == '__main__':
     # 1. 用列生成模型求解原问题的LP松弛问题
     c = CGProc(s, d, L)
-    c.run()
+    c.solve()
     c.print_info()
     # 2. 得到松弛问题的解
     A = c.get_solution_matrix()
