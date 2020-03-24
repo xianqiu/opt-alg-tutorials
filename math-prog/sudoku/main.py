@@ -1,5 +1,5 @@
 from model import SudokuModel
-from data import a
+from gen_data import a
 
 
 if __name__ == '__main__':

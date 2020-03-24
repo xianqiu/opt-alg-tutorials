@@ -1,5 +1,5 @@
 from benders_proc import BendersProc
-from data import f, C
+from gen_data import f, C
 
 
 if __name__ == '__main__':

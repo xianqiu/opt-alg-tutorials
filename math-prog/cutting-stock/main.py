@@ -1,5 +1,5 @@
 from cg_proc import CGProc
-from data import s, d, L
+from gen_data import s, d, L
 from rouding_proc import RoundingProc
 
 

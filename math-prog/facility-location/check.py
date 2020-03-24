@@ -64,5 +64,5 @@ class CheckModel(object):
 
 
 if __name__ == '__main__':
-    from data import f, C
+    from gen_data import f, C
     CheckModel(f, C).solve()

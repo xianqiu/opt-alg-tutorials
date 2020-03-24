@@ -1,4 +1,4 @@
-from data import a, d, C
+from gen_data import a, d, C
 from model import TransportModel
 
 
