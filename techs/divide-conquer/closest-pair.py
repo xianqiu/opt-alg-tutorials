@@ -35,7 +35,7 @@ def get_points_near_sep_line(Py, Qx , d):
     return [p for p in Py if p[0] - x0 < d]
 
 
-def search_closest_pair_of_Sy(Sy):
+def closest_pair_of_sy(Sy):
     """ 计算集合Sy的closest pair
     """
     n = len(Sy)
@@ -67,7 +67,7 @@ def combine_results_of_sub_problems(Py, Qx, q0, q1, r0, r1):
     S = get_points_near_sep_line(Py, Qx, d)
     Sy = sorted(S, key=lambda item: item[1])
     # 检查是否存在距离更小的pair
-    s1, s2 = search_closest_pair_of_Sy(Sy)
+    s1, s2 = closest_pair_of_sy(Sy)
     if s1 and s2 and get_dist(s1, s2) < d:
         return s1, s2
     elif get_dist(q0, q1) < get_dist(r0, r1):
