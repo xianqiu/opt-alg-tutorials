@@ -24,8 +24,8 @@ def search_closest_pair(points):
     return points[i_min], points[j_min]
 
 
-def get_points_near_sep_line(Py, Qx , d):
-    """ 从Q和R中选择距离x=x0不超过d的点.
+def get_sy(Py, Qx, d):
+    """ 根据Py计算Sy.
     :param Py: P按y轴排序的结果
     :param Qx: P在x=x0处被切分成Q和R. Qx是Q按x轴排序的结果
     :param d: delta
@@ -62,10 +62,9 @@ def combine_results_of_sub_problems(Py, Qx, q0, q1, r0, r1):
     :param r1: 参考r0
     :return: closest pair in P
     """
-    # 计算离直线x=x0不超过d的点,然后按y轴升序排列(Sy)
+    # 计算Sy
     d = min(get_dist(q0, q1), get_dist(r0, r1))
-    S = get_points_near_sep_line(Py, Qx, d)
-    Sy = sorted(S, key=lambda item: item[1])
+    Sy = get_sy(Py, Qx, d)
     # 检查是否存在距离更小的pair
     s1, s2 = closest_pair_of_sy(Sy)
     if s1 and s2 and get_dist(s1, s2) < d:
@@ -97,6 +96,13 @@ def closest_pair_xy(Px, Py):
 
 
 def closest_pair(points):
+    """ 计算二维点集中的closest pair.
+    :param points: P = [(x1,y1), (x2,y2), ..., (xn, yn)]
+    :return: 两个距离最近的点
+    """
+
+    # 把P按x轴和y轴分别进行排序, 得到Px和Py
+    # 注意: P, Px, Py 三个集合是相同的(仅仅排序不同)
     Px = sorted(points, key=lambda item: item[0])
     Py = sorted(points, key=lambda item: item[1])
     return closest_pair_xy(Px, Py)
@@ -110,7 +116,13 @@ def generate_test_points(point_num):
 
 
 if __name__ == '__main__':
-    points = generate_test_points(10)
+    points = generate_test_points(100)
     p1, p2 = closest_pair(points)
     print(p1, p2, get_dist(p1, p2))
+
+
+
+
+
+
 
