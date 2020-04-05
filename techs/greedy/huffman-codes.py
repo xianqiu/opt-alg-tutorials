@@ -74,8 +74,7 @@ class HuffmanCodes(object):
     def encode(self, chars):
         """ 把字符串chars转换成Huffman codes.
         """
-        codes = [self._huffman_codes[c] for c in chars]
-        return ''.join(codes)
+        return ''.join([self._huffman_codes[c] for c in chars])
 
     def decode(self, codes):
         """ 把0/1编码(字符串格式)转换成字符串.
