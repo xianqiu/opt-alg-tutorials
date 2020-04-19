@@ -5,7 +5,6 @@ class SCC(object):
     """
     Compute strongly connected components (SCC).
     """
-
     def __init__(self, G):
         """
         :param G: Graph, 数据结构为邻接表:
@@ -17,10 +16,12 @@ class SCC(object):
         }
         """
         self._G = G
-        self._scc = None
+        self._scc = None  # 计算结果
 
     @staticmethod
     def _transpose(G):
+        """ 计算G的转置(Transpose graph).
+        """
         G_t = {v: [] for v in G.keys()}
         for u, edges in G.items():
             for v in edges:
@@ -43,7 +44,7 @@ class SCC(object):
 
     @staticmethod
     def _format_scc(forest):
-        """ 计算搜索森林中每颗树的顶点集合
+        """ 计算搜索森林中每颗树的顶点集合.
         """
         scc = []
         for tree in forest:
