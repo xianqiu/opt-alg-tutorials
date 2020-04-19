@@ -43,6 +43,8 @@ class SCC(object):
 
     @staticmethod
     def _format_scc(forest):
+        """ 计算搜索森林中每颗树的顶点集合
+        """
         scc = []
         for tree in forest:
             tree_vertices = set({})
