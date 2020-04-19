@@ -25,7 +25,7 @@ class HuffmanCodes(object):
         self._q = self._init_priority_queue()
         self._root = None  # encoding tree
         self._huffman_codes = {}  # 编码结果
-        self._build_binary_tree() # 构建二叉树
+        self._build_binary_tree()  # 构建二叉树
         self._format_huffman_codes()  # 保存编码结果
 
     def _init_priority_queue(self):
@@ -57,7 +57,7 @@ class HuffmanCodes(object):
 
     def _format_huffman_codes(self):
         """ 把每一个字符对应的编码保存在字典中(self._huffman_codes)
-   		"""
+        """
         temp = []
 
         def traverse(v, res):
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     hc = HuffmanCodes(['a', 'b', 'c', 'd', 'e', 'f'], [45, 13, 12, 16, 9, 5])
     print('==== Huffman encoding ====')
     string = 'acdefcbe'
-    codes = hc.encode(string)
-    print("%s -> %s" % (string, codes))
+    d = hc.encode(string)
+    print("%s -> %s" % (string, d))
     print('==== Huffman decoding ====')
-    print('%s -> %s' % (codes, hc.decode(codes)))
+    print('%s -> %s' % (d, hc.decode(d)))
