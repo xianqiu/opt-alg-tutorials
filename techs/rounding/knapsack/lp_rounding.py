@@ -1,7 +1,6 @@
 from ortools.linear_solver import pywraplp
 
 
-
 class KnapsackLPRounding(object):
     """ 背包问题LP Rounding(近似)解法.
     """
