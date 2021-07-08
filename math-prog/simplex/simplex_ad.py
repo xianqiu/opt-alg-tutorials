@@ -3,7 +3,7 @@ import numpy as np
 
 
 def arg_min(arr):
-    """ 给定数组，返回 ”所有“ 最小值的下标。
+    """ 给定数组，返回 ”所有“ 最小值的index。
     """
     v = np.infty
     res = []
