@@ -57,3 +57,9 @@ class SimplexAD(SimplexA):
         indices = arg_min(ratios)
         out_int_set1 = [out_candidates[k] for k in indices]
         return self._get_out_ind(out_int_set1, j + 1, a_in)
+
+
+if __name__ == '__main__':
+    from instances import instances
+    ins = instances[4]  # degenerate
+    SimplexA(ins['c'], ins['A'], ins['b'], ins['v0']).solve()

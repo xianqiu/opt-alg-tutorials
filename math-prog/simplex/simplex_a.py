@@ -135,3 +135,11 @@ class SimplexA(object):
     def get_status(self):
         return self._status
 
+
+if __name__ == '__main__':
+    from instances import instances
+    ins = instances[0]  # Normal
+    SimplexA(ins['c'], ins['A'], ins['b'], ins['v0']).solve()
+    ins = instances[2]  # Unbounded
+    SimplexA(ins['c'], ins['A'], ins['b'], ins['v0']).solve()
+

@@ -43,7 +43,6 @@ class Simplex2P(object):
         # If feasible, consider the following two cases.
         # Case1(normal): artificial vars not in basic vars.
         self._basic_vars = sim.get_basic_vars()
-        print("init basic vars =", self._basic_vars)
 
         # Case2(degenerate): artificial vars in basic vars.
         # Then exchange artificial columns with non-basic columns.
@@ -91,9 +90,6 @@ class Simplex2P(object):
             # remove redundant basis w.r.t. redundant rows.
             reserved_indices = set(range(len(self._basic_vars))) - set(rr)
             self._basic_vars = [self._basic_vars[i] for i in reserved_indices]
-
-        print("redundant rows:", rr)
-        print("basic vars:", self._basic_vars)
 
     def _remove_redundant_rows(self, redundant_rows):
         # remove from original instance
@@ -143,10 +139,6 @@ class Simplex2P(object):
                     self._R12[:, in_var] = np.array([1 if i == row_ind else 0 for i in range(self._m)])
                     break
 
-            print("basic vars =", self._basic_vars)
-            print(np.round(self._R12, 2))
-            print("======")
-
     def _get_in_var(self, basic_art_vars_num, art_ind):
         """
         :param basic_art_vars_num: the total number of "basic" artificial variables
@@ -162,7 +154,6 @@ class Simplex2P(object):
 
     def solve(self):
         self._initialize()
-        print('v0 =', self._basic_vars)
         if self._status == 'INFEASIBLE':
             print('>> INFEASIBLE.')
         else:
@@ -175,5 +166,7 @@ class Simplex2P(object):
 
 if __name__ == '__main__':
     from instances import instances
-    ins = instances[8]  # Degenerate
+    ins = instances[0]  # Noraml
+    Simplex2P(ins['c'], ins['A'], ins['b']).solve()
+    ins = instances[6]  # Degenerate
     Simplex2P(ins['c'], ins['A'], ins['b']).solve()
