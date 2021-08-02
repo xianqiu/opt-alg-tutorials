@@ -170,3 +170,5 @@ if __name__ == '__main__':
     Simplex2P(ins['c'], ins['A'], ins['b']).solve()
     ins = instances[6]  # Degenerate
     Simplex2P(ins['c'], ins['A'], ins['b']).solve()
+    ins = instances[11]  # Degenerate
+    Simplex2P(ins['c'], ins['A'], ins['b']).solve()

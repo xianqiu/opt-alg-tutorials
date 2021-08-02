@@ -58,27 +58,33 @@ class SimplexA(object):
         return True
 
     def _pivot(self):
-        ind_in = np.argmax(self._mu_t)
-        var_in = self._non_basic_vars[ind_in]
-        var_out = self._minimum_ratio_test(var_in)
-        if var_out is None:
+        j_ind = np.argmax(self._mu_t)
+        # 入基变量 x_j
+        j = self._non_basic_vars[j_ind]
+        # 出基变量 x_i
+        i = self._minimum_ratio_test(j)
+        if i is None:
             self._status = 'UNBOUNDED'
             return
         # update basic vars
-        for i in range(self._m):
-            if self._basic_vars[i] == var_out:
-                self._basic_vars[i] = var_in
+        for k in range(self._m):
+            if self._basic_vars[k] == i:
+                self._basic_vars[k] = j
                 break
         # update non basic vars
-        self._non_basic_vars[ind_in] = var_out
+        self._non_basic_vars[j_ind] = i
 
-    def _minimum_ratio_test(self, var_in):
+    def _minimum_ratio_test(self, j):
+        """
+        :param j: 入基变量 x_j 的下标 j
+        :return: 出基变量 x_i 的下标 i
+        """
         b_bar = np.dot(self._B_inv, self._b)
-        a_in = np.dot(self._B_inv, self._A[:, var_in])
+        a_in = np.dot(self._B_inv, self._A[:, j])
         ratios = list(map(lambda b, a: b/a if a > 1e-6 else np.infty, b_bar, a_in))
-        out_index = np.argmin(ratios)
-        if ratios[out_index] != np.infty:
-            return self._basic_vars[out_index]
+        i_ind = np.argmin(ratios)
+        if ratios[i_ind] != np.infty:
+            return self._basic_vars[i_ind]
         else:
             return None
 
