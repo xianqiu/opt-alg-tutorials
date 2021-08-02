@@ -5,7 +5,7 @@ class SimplexA(object):
     """
     单纯形算法（基本版）。
     Note:
-    	1、系数矩阵满秩。
+        1、系数矩阵满秩。
         2、未处理退化情形。
         3、输入基本可行解（对应的列）。
     """
@@ -15,19 +15,22 @@ class SimplexA(object):
         :param A: m * n matrix
         :param b: m * 1 vector
         :param v0: basic variables, list of variable indices
+        注意：v0是 B 的列下标。x0 = B^{-1}b 即为基本可行解（需要保证x0非负）。
         """
+        # 输入
         self._c = np.array(c)
         self._A = np.array(A)
         self._b = np.array(b)
-        self._m = len(A)
-        self._n = len(c)
         self._basic_vars = v0
         self._non_basic_vars = self._init_non_basic_vars()
-
+        self._m = len(A)
+        self._n = len(c)
+        # 辅助变量
         self._iter_num = 0
         self._B_inv = None  # inverse of B
         self._lambda_t = None  # shadow price
         self._mu_t = None  # reduced cost
+        # 输出
         self._obj = None  # objective function value
         self._sol = None  # solution
         self._status = None
@@ -58,6 +61,8 @@ class SimplexA(object):
         return True
 
     def _pivot(self):
+        """ 选主元，入基和出基。
+        """
         j_ind = np.argmax(self._mu_t)
         # 入基变量 x_j
         j = self._non_basic_vars[j_ind]
@@ -75,7 +80,8 @@ class SimplexA(object):
         self._non_basic_vars[j_ind] = i
 
     def _minimum_ratio_test(self, j):
-        """
+        """ Minimum Ratio Test.
+        给定入基的非基变量，返回出基的基变量。
         :param j: 入基变量 x_j 的下标 j
         :return: 出基变量 x_i 的下标 i
         """
