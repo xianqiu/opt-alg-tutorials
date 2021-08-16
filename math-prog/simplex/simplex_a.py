@@ -22,9 +22,9 @@ class SimplexA(object):
         self._A = np.array(A)
         self._b = np.array(b)
         self._basic_vars = v0
-        self._non_basic_vars = self._init_non_basic_vars()
         self._m = len(A)
         self._n = len(c)
+        self._non_basic_vars = self._init_non_basic_vars()
         # 辅助变量
         self._iter_num = 0
         self._B_inv = None  # inverse of B
@@ -113,7 +113,18 @@ class SimplexA(object):
         print("+ objective = {}".format(self._obj))
         print("+ x = {}".format(self._sol))
 
+    def _check_feasibility(self):
+        """
+        """
+        B = np.array([self._A[:, j] for j in self._basic_vars]).transpose()
+        self._B_inv = np.linalg.inv(B)
+        x_B = np.dot(self._B_inv, self._b)
+        for x in x_B:
+            if x < 0:
+                raise AssertionError("Initial solution is not feasible!")
+
     def solve(self, print_info=True):
+        self._check_feasibility()
         self._iter_num = 0
         self._update_reduced_cost()
         self._update_obj()
