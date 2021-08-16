@@ -114,7 +114,7 @@ class SimplexA(object):
         print("+ x = {}".format(self._sol))
 
     def _check_feasibility(self):
-        """
+        """ Check feasibility of the initial solution.
         """
         B = np.array([self._A[:, j] for j in self._basic_vars]).transpose()
         self._B_inv = np.linalg.inv(B)
