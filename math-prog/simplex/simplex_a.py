@@ -28,8 +28,8 @@ class SimplexA(object):
         # 辅助变量
         self._iter_num = 0
         self._B_inv = None  # inverse of B
-        self._lambda_t = None  # shadow price
-        self._mu_t = None  # reduced cost
+        self._lambda = None  # shadow price
+        self._mu = None  # reduced cost
         # 输出
         self._obj = None  # objective function value
         self._sol = None  # solution
@@ -46,24 +46,24 @@ class SimplexA(object):
     def _update_reduced_cost(self):
         B = np.array([self._A[:, j] for j in self._basic_vars]).transpose()
         self._B_inv = np.linalg.inv(B)
-        # transpose of c_B
-        c_B_t = np.array([self._c[j] for j in self._basic_vars])
+        c_B = np.array([self._c[j] for j in self._basic_vars])
         # shadow price
-        self._lambda_t = np.dot(c_B_t, self._B_inv)
+        self._lambda = np.dot(c_B, self._B_inv)
         N = np.array([self._A[:, j] for j in self._non_basic_vars]).transpose()
-        c_N_t = np.array([self._c[j] for j in self._non_basic_vars])
+        c_N = np.array([self._c[j] for j in self._non_basic_vars])
         # reduced cost
-        self._mu_t = np.dot(self._lambda_t, N) - c_N_t
+        self._mu = c_N - np.dot(self._lambda, N)
 
     def _is_optimal(self):
-        if max(self._mu_t) > 1e-6:
-            return False
+        for x in self._mu:
+            if x < 0:
+                return False
         return True
 
     def _pivot(self):
         """ 选主元，入基和出基。
         """
-        j_ind = np.argmax(self._mu_t)
+        j_ind = np.argmin(self._mu)
         # 入基变量 x_j
         j = self._non_basic_vars[j_ind]
         # 出基变量 x_i
@@ -95,7 +95,7 @@ class SimplexA(object):
             return None
 
     def _update_obj(self):
-        self._obj = np.dot(self._lambda_t, self._b)
+        self._obj = np.dot(self._lambda, self._b)
 
     def _update_solution(self):
         x_B = np.dot(self._B_inv, self._b)
@@ -108,13 +108,13 @@ class SimplexA(object):
             return
         print("==== iteration {} ====".format(self._iter_num))
         print("+ basic variables: {}".format(self._basic_vars))
-        print("+ shadow price: {}".format(self._lambda_t))
-        print("+ reduced cost: {}".format(self._mu_t))
+        print("+ shadow price: {}".format(self._lambda))
+        print("+ reduced cost: {}".format(self._mu))
         print("+ objective = {}".format(self._obj))
         print("+ x = {}".format(self._sol))
 
-    def _check_feasibility(self):
-        """
+    def _check_init_solution(self):
+        """ Check feasibility of the initial solution.
         """
         B = np.array([self._A[:, j] for j in self._basic_vars]).transpose()
         self._B_inv = np.linalg.inv(B)
@@ -124,8 +124,8 @@ class SimplexA(object):
                 raise AssertionError("Initial solution is not feasible!")
 
     def solve(self, print_info=True):
-        self._check_feasibility()
         self._iter_num = 0
+        self._check_init_solution()
         self._update_reduced_cost()
         self._update_obj()
         self._update_solution()
