@@ -87,7 +87,7 @@ class SimplexA(object):
         """
         b_bar = np.dot(self._B_inv, self._b)
         a_in = np.dot(self._B_inv, self._A[:, j])
-        ratios = list(map(lambda b, a: b/a if a > 1e-6 else np.infty, b_bar, a_in))
+        ratios = list(map(lambda b, a: b/a if a > 0 else np.infty, b_bar, a_in))
         i_ind = np.argmin(ratios)
         if ratios[i_ind] != np.infty:
             return self._basic_vars[i_ind]
