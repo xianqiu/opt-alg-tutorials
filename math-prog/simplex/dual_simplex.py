@@ -131,14 +131,15 @@ class DualSimplex(object):
                 raise ValueError('Initial solution is not dual feasible!')
 
     def solve(self):
-        self._check_init_solution()
+        self._iter_num = 0  # 记录迭代次数
+        self._check_init_solution()  # 检查初始的对偶解是否可行
         self._update_solutions()
         self._update_obj()
         self._print_info()
-        while not self._is_optimal():
+        while not self._is_optimal():  # 判断是否最优或者不可行
             if self._status == "INFEASIBLE":
                 break
-            self._pivot()
+            self._pivot()  # 迭代（选主元入基，执行Minimum Ratio Test，然后出基）
             self._update_solutions()
             self._update_obj()
             self._iter_num += 1
