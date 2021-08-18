@@ -10,18 +10,18 @@ class DualSimplex(object):
             3、输入对偶可行解（对应的列）。
     """
 
-    def __init__(self, c, A, b, v0):
+    def __init__(self, c, A, b, v1):
         """
         :param c: n * 1 vector
         :param A: m * n matrix
         :param b: m * 1 vector
-        :param v0: dual feasible solution, list of column indices
+        :param v1: dual feasible solution, list of column indices
         """
         # 输入
         self._c = np.array(c)
         self._A = np.array(A)
         self._b = np.array(b)
-        self._basic_vars = v0
+        self._basic_vars = v1
         self._m = len(A)
         self._n = len(c)
         self._non_basic_vars = self._init_non_basic_vars()
