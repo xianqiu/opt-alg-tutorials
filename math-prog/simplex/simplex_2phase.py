@@ -36,7 +36,7 @@ class Simplex2P(object):
         sim = SimplexAD(*self._ins1).solve(print_info=False)
 
         # check feasibility
-        if abs(sim.get_objective()) > 1e-6 or sim.get_status() != 'OPTIMAL':
+        if abs(sim.get_objective()) > 0 or sim.get_status() != 'OPTIMAL':
             self._status = 'INFEASIBLE'
             return
 
@@ -118,7 +118,6 @@ class Simplex2P(object):
         return np.array(mat).transpose()
 
     def _replace_artificial_basis(self):
-
         for i in range(self._basic_art_vars_num):
             # "in" variable from non basic variables
             in_var = self._get_in_var(self._basic_art_vars_num, i)
@@ -126,7 +125,6 @@ class Simplex2P(object):
                 continue
             # "out" variable from basic variables (which is artificial)
             out_var = self._basic_art_vars[i]
-
             # replacement
             for j in range(self._m):
                 if self._basic_vars[j] == out_var:
@@ -148,7 +146,7 @@ class Simplex2P(object):
         row_id = self._m - basic_art_vars_num + art_ind
         k = len(self._R12[row_id])
         for j in range(k):
-            if abs(self._R12[row_id][j]) > 1e-6:
+            if abs(self._R12[row_id][j]) > 0:
                 return j
         return None
 
@@ -166,7 +164,7 @@ class Simplex2P(object):
 
 if __name__ == '__main__':
     from instances import instances
-    ins = instances[0]  # Noraml
+    ins = instances[0]  # Normal
     Simplex2P(ins['c'], ins['A'], ins['b']).solve()
     ins = instances[6]  # Degenerate
     Simplex2P(ins['c'], ins['A'], ins['b']).solve()

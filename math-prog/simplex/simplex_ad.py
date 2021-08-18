@@ -29,7 +29,7 @@ class SimplexAD(SimplexA):
         :param j: 入基变量 x_j 的下标 j
         :return: 出基变量 x_i 的下标 i
         """
-        a_in = np.dot(self._B_inv, self._A[:, j])
+        a_in = self._B_inv @ self._A[:, j]
         d0 = self._get_d0(a_in)  # 计算 I_0 的数组下标
         if d0 is None:
             return None
@@ -45,8 +45,8 @@ class SimplexAD(SimplexA):
         2、计算 d0 = arg min(ratios)，即 ratios 中最小值的下标
         3、I_0 = [self._basic_vars[i] for i in d0]
         """
-        b_bar = np.dot(self._B_inv, self._b)
-        ratios = list(map(lambda b, a: b / a if a > 1e-6 else np.infty, b_bar, a_in))
+        b_bar = self._B_inv @ self._b
+        ratios = list(map(lambda b, a: b / a if a > 0 else np.infty, b_bar, a_in))
         d0 = arg_min(ratios)
         if ratios[d0[0]] == np.infty:
             # a_in 的分量 <= 0
@@ -63,7 +63,7 @@ class SimplexAD(SimplexA):
         """
         if len(d0) == 1:
             return d0[0]
-        a_it = np.dot(self._B_inv, self._A[:, it])
+        a_it = self._B_inv @ self._A[:, it]
         ratios = [a_it[k] / a_in[k] for k in d0]
         indices = arg_min(ratios)
         d1 = [d0[k] for k in indices]
@@ -72,8 +72,8 @@ class SimplexAD(SimplexA):
 
 if __name__ == '__main__':
     from instances import instances
-    # ins = instances[4]  # degenerate
-    # SimplexAD(ins['c'], ins['A'], ins['b'], ins['v0']).solve()
+    ins = instances[4]  # degenerate
+    SimplexAD(ins['c'], ins['A'], ins['b'], ins['v0']).solve()
     ins = instances[11]  # degenerate
     SimplexAD(ins['c'], ins['A'], ins['b'], ins['v0']).solve()
 

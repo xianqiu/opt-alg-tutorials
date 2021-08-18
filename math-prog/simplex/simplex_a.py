@@ -48,11 +48,11 @@ class SimplexA(object):
         self._B_inv = np.linalg.inv(B)
         c_B = np.array([self._c[j] for j in self._basic_vars])
         # shadow price
-        self._lambda = np.dot(c_B, self._B_inv)
+        self._lambda = c_B @ self._B_inv
         N = np.array([self._A[:, j] for j in self._non_basic_vars]).transpose()
         c_N = np.array([self._c[j] for j in self._non_basic_vars])
         # reduced cost
-        self._mu = c_N - np.dot(self._lambda, N)
+        self._mu = c_N - self._lambda @ N
 
     def _is_optimal(self):
         for x in self._mu:
@@ -85,8 +85,8 @@ class SimplexA(object):
         :param j: 入基变量 x_j 的下标 j
         :return: 出基变量 x_i 的下标 i
         """
-        b_bar = np.dot(self._B_inv, self._b)
-        a_in = np.dot(self._B_inv, self._A[:, j])
+        b_bar = self._B_inv @ self._b
+        a_in = self._B_inv @ self._A[:, j]
         ratios = list(map(lambda b, a: b/a if a > 0 else np.infty, b_bar, a_in))
         i_ind = np.argmin(ratios)
         if ratios[i_ind] != np.infty:
@@ -95,10 +95,10 @@ class SimplexA(object):
             return None
 
     def _update_obj(self):
-        self._obj = np.dot(self._lambda, self._b)
+        self._obj = self._lambda @ self._b
 
     def _update_solution(self):
-        x_B = np.dot(self._B_inv, self._b)
+        x_B = self._B_inv @ self._b
         self._sol = [0] * self._n
         for k in range(self._m):
             self._sol[self._basic_vars[k]] = x_B[k]
@@ -118,7 +118,7 @@ class SimplexA(object):
         """
         B = np.array([self._A[:, j] for j in self._basic_vars]).transpose()
         self._B_inv = np.linalg.inv(B)
-        x_B = np.dot(self._B_inv, self._b)
+        x_B = self._B_inv @ self._b
         for x in x_B:
             if x < 0:
                 raise AssertionError("Initial solution is not feasible!")
@@ -165,4 +165,3 @@ if __name__ == '__main__':
     SimplexA(ins['c'], ins['A'], ins['b'], ins['v0']).solve()
     ins = instances[2]  # Unbounded
     SimplexA(ins['c'], ins['A'], ins['b'], ins['v0']).solve()
-
