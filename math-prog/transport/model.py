@@ -18,6 +18,7 @@ class TransportModel(object):
         self._m = len(self._a)  # 仓库数量
         self._n = len(self._d)  # 客户数量
         self._x = None  # 决策变量
+        self._obj = None  # 优化目标（对象）
         self._solution_x = None  # 计算结果
         self._obj_val = None  # 目标函数值
 
@@ -43,11 +44,11 @@ class TransportModel(object):
                 ct.SetCoefficient(self._x[i][j], 1)
 
     def _init_objective(self):
-        obj = self._solver.Objective()
+        self._obj = self._solver.Objective()
         for i in range(self._m):
             for j in range(self._n):
-                obj.SetCoefficient(self._x[i][j], self._C[i][j])
-        obj.SetMinimization()
+                self._obj.SetCoefficient(self._x[i][j], self._C[i][j])
+        self._obj.SetMinimization()
 
     def solve(self):
         self._init_decision_variables()
@@ -55,12 +56,12 @@ class TransportModel(object):
         self._init_objective()
         self._solver.Solve()
         # 求解器返回的解
-        self._solution_x = [
-            [self._x[i][j].solution_value() for j in range(self._n)]
-            for i in range(self._m)
-        ]
+        self._solution_x = [[
+            self._x[i][j].solution_value()
+            for j in range(self._n)]
+            for i in range(self._m)]
         # sum(C[i][i] * x[i][j]) over i,j
-        self._obj_val = np.sum(np.array(self._C) * np.array(self._solution_x))
+        self._obj_val = self._obj.Value()
 
     def print_result(self):
         print("最优值 = ", self._obj_val)
