@@ -41,7 +41,7 @@ class TransportModel(object):
             for j in range(self._n):
                 ct.SetCoefficient(self._x[i][j], 1)
         # 每个客户的需求应该被满足
-        # sum(x[i][j]) == b[j], over i
+        # sum(x[i][j]) == d[j], over i
         for j in range(self._n):
             ct = self._solver.Constraint(self._d[j], self._d[j])
             for i in range(self._m):
