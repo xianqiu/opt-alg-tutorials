@@ -24,43 +24,42 @@ class KnapsackDP(object):
         max_p = max(self._p)
         for i in range(n):
             f[i] = [math.inf] * n * max_p
-            f[0][0] = 0  # !
-            f[0][self._p[0]] = self._w[0]
+        f[0][0] = 0  # !
+        f[0][self._p[0]] = self._w[0]
         return f
 
     def solve(self):
         n = len(self._w)
         max_p = max(self._p)
-        # result_items保存计算的中间结果
+
         # key = profit, value = 达到此profit所包含的一个item
-        result_items = {self._p[0]: 0}  # 初始化
         for i in range(n-1):
             for j in range(n * max_p):
                 if self._p[i+1] <= j:
                     self._f[i+1][j] = min(self._f[i][j],
                                           self._f[i][j-self._p[i+1]] + self._w[i+1])
-                    if self._f[i][j-self._p[i+1]] + self._w[i+1] < self._f[i][j]:
-                        result_items[j] = i+1
+                    
                 else:
                     self._f[i+1][j] = self._f[i][j]
 
-            self._result = self._get_result(result_items, self._get_profit())
+        self._result = self._get_result( self._get_profit())
         return self
 
     def _get_profit(self):
         weights = self._f[len(self._w) - 1]
+        # print(weights)
         m = len(weights)
         for i in range(m):
             value = m - 1 - i
             if weights[value] <= self._W:
                 return value
 
-    def _get_result(self, result_items, profit):
+    def _get_result(self,  profit):
         result = []
-        while profit:
-            i = result_items[profit]
-            result.append(i)
-            profit -= self._p[i]
+        for i in range(self._n-1,0,-1):
+            if self._f[i][profit] > self._f[i-1][profit] or self._f[i-1][profit] == math.inf:
+                result.append(i)
+                profit -= self._p[i]
         return result
 
     def get_result(self):
@@ -102,10 +101,9 @@ class KnapsackFPTAS(object):
 
 
 if __name__ == '__main__':
-    W = 67
+    W = 180 #150
     p = [505, 352, 458, 220, 354, 414, 498, 545, 473, 543]
     w = [23, 26, 20, 18, 32, 27, 29, 26, 30, 27]
-
     import time
     print("==== DP solution ====")
     t1 = time.time()
