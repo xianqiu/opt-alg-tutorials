@@ -1,5 +1,5 @@
 ---
-weight: 100
+weight: 200
 title: "Search"
 description: ""
 icon: "chips"

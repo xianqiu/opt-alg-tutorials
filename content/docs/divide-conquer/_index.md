@@ -1,5 +1,5 @@
 ---
-weight: 200
+weight: 100
 title: "Divide and Conquer"
 description: ""
 icon: "scatter_plot"

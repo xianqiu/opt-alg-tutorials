@@ -8,3 +8,5 @@ lastmod: "2025-06-24T19:58:58+08:00"
 draft: true
 toc: true
 ---
+
+2-opt tsp.
