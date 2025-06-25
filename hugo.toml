@@ -1,0 +1,45 @@
+baseURL = '/'
+languageCode = 'en-us'
+title = 'Algorithm Examples'
+
+[module]
+    [[module.imports]]
+        path = "github.com/colinwilson/lotusdocs"
+        disable = false
+    [[module.imports]]
+        path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
+        disable = false
+[params]
+    [params.docs]
+        themeColor = "blue"
+        sidebarIcons = true
+        titleIcon = true
+        descriptions = true
+        # git info
+        repoURL = "https://github.com/xianqiu/algorithm-examples"
+        lastMod = true
+        lastModRelative = true
+        editPage = true
+        # code color 
+        prism = true
+        prismTheme = "lotusdocs"
+
+    [params.flexsearch]
+    enabled = true
+
+    [params.docsearch]
+      appID     = ""                  
+      apiKey    = "" 
+      indexName = ""                    
+
+    [params.social]
+        github = "xianqiu/algorithm-examples"
+
+    [params.plausible] # Parameters for Plausible Analytics
+        dataDomain = "lotusdocs.dev" # (or set via env variable HUGO_PARAMS_PLAUSIBLE_dataDomain)
+        scriptURL  = "/docs/s/js/script.outbound-links.js"       # (or set via env variable HUGO_PARAMS_PLAUSIBLE_scriptURL)
+        eventAPI   = "/docs/s/api/event/"       # optional - (or set via env variable HUGO_PARAMS_PLAUSIBLE_eventAPI)
+
+[services]
+  [services.googleAnalytics]
+      id = ''
