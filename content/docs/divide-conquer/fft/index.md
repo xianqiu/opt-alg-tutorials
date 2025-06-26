@@ -10,16 +10,16 @@ toc: true
 katex: true
 ---
 
-Given an $n$-dimensional vector $v \in \mathbb{C}^n$, its **Discrete Fourier Transform** $\mathcal{F}(v)$ is defined as the product of an $n \times n$ matrix $M_n$ (which will be given later) and the vector $v$:
+Given an $n$-dimensional vector $v \in \mathbb{C}^n$, its **Discrete Fourier Transform** $\mathcal{F}(v)$ is defined as the product of an $n \times n$ matrix $M_n$ (which will be introduced later) and the vector $v$:
 {{<katex>}}
 $$
 \mathcal{F}(v) = M_n v.
 $$
 {{</katex>}}
 
-The result can be obtained by performing the vector product of each row of $M_n$ with $v$. Each row's vector product takes $O(n)$ time, and since there are $n$ rows, the time complexity of the matrix multiplication is $O(n^2)$.
+The result is obtained by computing the vector product of each row of $M_n$ with $v$. Each row's vector product takes $O(n)$ time, and since there are $n$ rows, the overall time complexity of the matrix multiplication is $O(n^2)$.
 
-The **Fast Fourier Transform** algorithm achieves a time complexity of $O(n \log n)$, by using the **divide-and-conquer** approach.
+The **Fast Fourier Transform** algorithm reduces this to a time complexity of $O(n \log n)$ by using a **divide-and-conquer** approach.
 
 ## Discrete Fourier Transform
 
