@@ -59,6 +59,7 @@ $$
 The algorithm can be implemented as below.
 
 ```python
+import numpy as np
 
 def simple_divide_and_conquer(A, B):
     n = A.shape[0]
@@ -123,6 +124,9 @@ $$
 The algorithm can be implemented as below.
 
 ```python
+import numpy as np
+
+
 def strassen(A, B):
     n = A.shape[0]
     if n == 1:
@@ -131,11 +135,11 @@ def strassen(A, B):
         A11, A12, A21, A22 = A[:n//2, :n//2], A[:n//2, n//2:], A[n//2:, :n//2], A[n//2:, n//2:]
         B11, B12, B21, B22 = B[:n//2, :n//2], B[:n//2, n//2:], B[n//2:, :n//2], B[n//2:, n//2:]
         P1 = strassen(A11, B12 - B22)
-        P2 = strassen(A11 + A12, B22)
-        P3 = strassen(A21 + A22, B11)
-        P4 = strassen(A22, B21 - B11)
-        P5 = strassen(A11 + A22, B11 + B22)
-        P6 = strassen(A12 - A22, B21 - B22)
+        P2 = strassen(A11 + A12, B22) 
+        P3 = strassen(A21 + A22, B11) 
+        P4 = strassen(A22, B21 - B11) 
+        P5 = strassen(A11 + A22, B11 + B22) 
+        P6 = strassen(A12 - A22, B21 + B22) 
         P7 = strassen(A11 - A21, B11 + B12)
         C11 = P5 + P4 - P2 + P6
         C12 = P1 + P2
