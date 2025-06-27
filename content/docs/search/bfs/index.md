@@ -47,11 +47,9 @@ The queue is initialized with an empty subset. At each step, we pop the first el
 
 There are threee cases.
 
-* Case 1: The sum of the subset is equal to the target. We return the subset and the search process is done.
-
-* Case 2: The sum of the subset is greater than the target. We skip the current number. 
-
-* Case 3: The sum of the subset is less than the target. We format new subsets by adding each of the remaining numbers to the subset, and push them to the queue. Note that the start index of the new subset is the next index of the current number.
+1. If the sum of the subset is equal to the target. We return the subset and the search process is done.
+2. If the sum of the subset is greater than the target. We skip the current number. 
+3. If the sum of the subset is less than the target. We format new subsets by adding each of the remaining numbers to the subset, and push them to the queue. Note that the start index of the new subset is the next index of the current number.
 
 We implement the algorithm as follows:
 

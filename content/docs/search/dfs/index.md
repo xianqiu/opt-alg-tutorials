@@ -39,7 +39,16 @@ The search begins with the first number `3`, producing the sequence `[3]`, `[3, 
 
 The depth first search is often implemented in a **recursive** way. 
 
-Define a recursive function `dfs(subset, current_sum, index)`, in which `subset` represents the current set of numbers,  `current_sum` is the sum of
+Define a recursive function `dfs(subset, index)`, in which `subset` represents the current set of numbers, `index` is the current index of the given `numbers` set.
+
+There are 4 cases to consider:
+
+1. If the sum of the current set of numbers is equal to the target, return the current set of numbers.
+2. If the sum of the current set of numbers is greater than the target return `None`.
+3. If the index exceeds the length of the given `numbers` set, return `None`.
+4. Otherwise, we have two choices:
+    1. Add the current number to the current set of numbers, and continue the search with the new set of numbers.
+    2. Do not add the current number to the current set of numbers, and continue the search with the new set of numbers.
 
 ```python
 def subset_sum_dfs(numbers, target):
