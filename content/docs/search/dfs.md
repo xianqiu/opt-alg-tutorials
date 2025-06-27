@@ -1,5 +1,5 @@
 ---
-weight: 999
+weight: 220
 title: "Depth First Search"
 description: ""
 icon: "article"
@@ -9,4 +9,4 @@ draft: true
 toc: true
 ---
 
-3d bin packing.
+subset sum problem.

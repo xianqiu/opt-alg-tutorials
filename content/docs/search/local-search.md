@@ -1,5 +1,5 @@
 ---
-weight: 999
+weight: 230
 title: "Local Search"
 description: ""
 icon: "article"
