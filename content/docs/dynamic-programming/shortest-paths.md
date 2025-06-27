@@ -1,5 +1,5 @@
 ---
-weight: 999
+weight: 320
 title: "Shortest Paths"
 description: ""
 icon: "article"

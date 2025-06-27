@@ -1,5 +1,5 @@
 ---
-weight: 999
+weight: 310
 title: "Longest Common Subsequence"
 description: ""
 icon: "article"
