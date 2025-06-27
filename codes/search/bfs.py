@@ -3,17 +3,17 @@ from collections import deque
 
 def subset_sum_bfs(numbers, target):
     queue = deque()
-    queue.append(([], 0, 0)) # (current subset, current sum, start index)
+    queue.append(([], 0)) # (current subset, start index)
     while queue:
-        subset, current_sum, start = queue.popleft()
+        subset, start = queue.popleft()
+        current_sum = sum(subset)
         if current_sum == target:
             return subset
         if current_sum > target:
             continue
         for i in range(start, len(numbers)):
             new_subset = subset + [numbers[i]]
-            new_sum = current_sum + numbers[i]
-            queue.append((new_subset, new_sum, i + 1))
+            queue.append((new_subset, i + 1))
     return None
 
 

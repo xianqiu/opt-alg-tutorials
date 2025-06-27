@@ -27,7 +27,7 @@ Given a set of integers and a target value, find if there is a subset of the giv
 
 ## Algorithm
 
-The basic idea is to solve the problem by brute force, i.e., enumerate all the subsets and check if the sum of the subset is equal to the target.
+The basic idea is to solve the problem by **brute force**, i.e., enumerate all the subsets and check if the sum of the subset is equal to the target.
 
 **Example**
 
@@ -37,11 +37,7 @@ The search tree is as follows:
 
 * 1-element subsets: `[3], [8], [10], [6], [7]`
 
-* 2-element subsets: `[3, 8], [3, 10], [3, 6], [3, 7], [8, 10], [8, 6], [8, 7], [10, 6], [10, 7], [6, 7]`
-
-* 3-element subsets: `[3, 8, 10], [3, 8, 6], [3, 8, 7], [3, 10, 6], [3, 10, 7], [3, 6, 7], [8, 10, 6], [8, 10, 7], [8, 6, 7], [10, 6, 7]`
-
-* ...
+* 2-element subsets: `[3, 8], [3, 10], [3, 6], [3, 7], [8, 10], [8, 6], [8, 7]`, then output `[8, 7]`.
 
 ## Code
 
@@ -65,16 +61,16 @@ from collections import deque
 
 def subset_sum_bfs(numbers, target):
     queue = deque()
-    queue.append(([], 0, 0)) # (current subset, current sum, start index)
+    queue.append(([], 0)) # (current subset, start index)
     while queue:
-        subset, current_sum, start = queue.popleft()
+        subset, start = queue.popleft()
+        current_sum = sum(subset)
         if current_sum == target:
             return subset
         if current_sum > target:
             continue
         for i in range(start, len(numbers)):
             new_subset = subset + [numbers[i]]
-            new_sum = current_sum + numbers[i]
-            queue.append((new_subset, new_sum, i + 1))
+            queue.append((new_subset, i + 1))
     return None
 ```
