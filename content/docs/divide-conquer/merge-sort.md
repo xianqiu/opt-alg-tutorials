@@ -56,6 +56,7 @@ Define two functions:
 * `merge` to merge two sorted sub-lists (conquer).
 
 ```python
+
 def merge_sort(arr):
     if len(arr) <= 1:
         return arr
@@ -66,6 +67,7 @@ def merge_sort(arr):
 ```
 
 ```python
+
 def merge(left, right):
     result = []
     i = j = 0
@@ -84,6 +86,7 @@ def merge(left, right):
 Run the code as below and yield the sorted result.
 
 ```python
+
 if __name__ == '__main__':
     arr = [5, 4, 11, 2, 10, 8, 4]
     print(merge_sort(arr))

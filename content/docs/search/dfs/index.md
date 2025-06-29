@@ -51,6 +51,7 @@ There are 4 cases to consider:
     2. Do not add the current number to the current set of numbers, and continue the search with the new set of numbers.
 
 ```python
+
 def subset_sum_dfs(numbers, target):
 
     def dfs(subset, index):
