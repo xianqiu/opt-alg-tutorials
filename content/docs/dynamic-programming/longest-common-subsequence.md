@@ -12,7 +12,7 @@ katex: true
 
 Consider two strings `s` and `s'`, if `s` contains all the characters of `s'` in the same order, then `s'` is called a **subsequence** of `s`. For example, `acdf` is a subsequence of `abcdeef`, but `acdf` is not a subsequence of `abccef`.
 
-Given two strings `X` and `Y`, the **longest common subsequence** problem is to find the longest subsequence which is common to both `X` and `Y`.
+Given two strings `X` and `Y`, the **longest common subsequence** (LCS) problem is to find the longest subsequence which is common to both `X` and `Y`.
 
 **Example**
 
