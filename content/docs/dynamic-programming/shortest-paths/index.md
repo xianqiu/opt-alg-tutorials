@@ -10,7 +10,7 @@ toc: true
 katex: true
 ---
 
-Given a directed graph `G` with weights on the edges, we define the **shortest path** between two vertices `i` and `j` as a path with the minimum total weight. The **all-pairs shortest path** problem is to find the shortest path between every pair of vertices in the graph.
+Given a directed graph `G` with weights on the edges, we define the **shortest path** between two vertices `i` and `j` as a path with the minimum total weight. The **all-pairs of shortest paths** problem is to find the shortest path between every pair of vertices in the graph.
 
 {{< figure src="example.png" width="200px" class="text-center">}}
 
