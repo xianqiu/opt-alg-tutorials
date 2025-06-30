@@ -77,14 +77,13 @@ def shortest_paths(c):
     :return: distance matrix and shortest paths
     """
     n = len(c)
-    # Shotrest path length
+    # Initialize length of shortest paths
     d = np.full((n, n, n+1), np.inf)
     d[:, :, 0] = copy.copy(c)
-    # Shortest paths
+    # Initialize shortest paths
     p = np.empty((n, n, n+1), dtype=object)
     for i in range(n):
         for j in range(n):
-            # Initialize shortest paths from i to j with length 0
             # The list contains the intermediate vertices in the shortest path
             p[i][j][0] = []
 
