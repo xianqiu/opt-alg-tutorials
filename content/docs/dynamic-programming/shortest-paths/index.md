@@ -71,9 +71,6 @@ import copy
 def shortest_paths(c):
     """ All-pairs of shortest paths
     :param c: cost matrix
-        * c[i][j] = infinity if (i,j) not in E
-        * c[i][j] = 0 if i = j
-        * c[i][j] = cost from i to j, if (i,j) in E
     :return: distance matrix and shortest paths
     """
     n = len(c)
