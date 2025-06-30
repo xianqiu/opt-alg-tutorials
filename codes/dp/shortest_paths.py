@@ -5,20 +5,16 @@ import copy
 def shortest_paths(c):
     """ All-pairs of shortest paths
     :param c: cost matrix
-        * c[i][j] = infinity if (i,j) not in E
-        * c[i][j] = 0 if i = j
-        * c[i][j] = cost from i to j, if (i,j) in E
     :return: shortest paths and distance matrix
     """
     n = len(c)
-    # Shotrest path length
+    # Initialize length of shortest paths
     d = np.full((n, n, n+1), np.inf)
     d[:, :, 0] = copy.copy(c)
-    # Shortest paths
+    # Initialize shortest paths
     p = np.empty((n, n, n+1), dtype=object)
     for i in range(n):
         for j in range(n):
-            # Initialize shortest paths from i to j with length 0
             # The list contains the intermediate vertices in the shortest path
             p[i][j][0] = []
 
