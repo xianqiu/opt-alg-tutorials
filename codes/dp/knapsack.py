@@ -1,6 +1,3 @@
-import numpy as np
-
-
 def knapsack_value(w, v, C):
     """
     :param w: list of weights
