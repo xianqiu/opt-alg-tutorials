@@ -40,7 +40,7 @@ $$
 d(i, j, k) = \min\set{d(i, j, k-1),~ d(i, k-1, k-1) + d(k-1, j, k-1)}
 $$
 
-**Boundary Conditions**
+**Initial Conditions**
 
 If `k = 0`, it implies there is no intermediate vertices between `i` and `j`. In this case, the shortest path is the edge `(i, j)`. 
 

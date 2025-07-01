@@ -35,22 +35,22 @@ def lcs_length_b(X, Y):
     return c[m][n], b
 
 
-def print_lcs(b, X, i, j, res):
-    """ Prints the LCS of X and Y given the b table in a recursive manner.
+def get_lcs(b, X, i, j, res):
+    """ Returns the LCS of X and Y given the b table in a recursive manner.
     The result is stored in res. The function is called with i = len(X) and j = len(Y).
     """
     if i == 0 or j == 0:
         return
     if b[i][j] == 1:
         # X[i - 1] == Y[j - 1] is in the optimal solution
-        print_lcs(b, X, i - 1, j - 1, res)   
+        get_lcs(b, X, i - 1, j - 1, res)   
         res.append(X[i - 1])
     elif b[i][j] == 2:
         # c[i, j] = c[i - 1, j]
-        print_lcs(b, X, i - 1, j, res)
+        get_lcs(b, X, i - 1, j, res)
     else:
         # c[i, j] = c[i, j - 1]
-        print_lcs(b, X, i, j - 1, res)
+        get_lcs(b, X, i, j - 1, res)
 
 
 def LCS(X, Y):
@@ -58,7 +58,7 @@ def LCS(X, Y):
     """
     _, b = lcs_length_b(X, Y)
     res = []
-    print_lcs(b, X, len(X), len(Y), res)
+    get_lcs(b, X, len(X), len(Y), res)
     return "".join(res)
 
 
