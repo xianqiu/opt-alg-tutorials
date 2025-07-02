@@ -10,7 +10,7 @@ toc: true
 katex: true
 ---
 
-PTAS stands for **polynomial time approximation scheme**, which is a method to find a solution to a problem in polynomial time, with a guarantee that the solution is within a certain factor of the optimal solution.
+PTAS is referred to as the **polynomial time approximation scheme**, which is a method to find a solution to a problem in polynomial time, with a guarantee that the solution is within a certain factor of the optimal solution.
 
 We use the knapsack problem as an example to illustrate the approach.
 
@@ -33,12 +33,12 @@ Enumerating all possible subsets of items with at most $k$ items and total weigh
 
 Therefore, the total time complexity is $O(2^k n + n \log n + n) = O(n 2^k)$. As $k$ is a constant, this is a polynomial time algorithm.
 
-Let $OPT$ be the optimal value of the knapsack problem and $ALG$ be the value of the solution found by the algorithm. 
+Let `opt` be the optimal value of the knapsack problem and `alg` be the value of the solution found by the algorithm. 
 
 It can be shown that the following holds:
 
 $$
-\text{OPT} \leq \left(1 + \frac{1}{k}\right) \cdot \text{ALG}
+\text{opt} \leq \left(1 + \frac{1}{k}\right) \cdot \text{alg}
 $$
 
 In particular, for $k = 1$, the algorithm is a 2-approximation algorithm, i.e., the algorithm finds a value that is at least half of the optimal value.
