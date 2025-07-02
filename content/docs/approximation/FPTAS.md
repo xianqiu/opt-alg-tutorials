@@ -156,6 +156,6 @@ $$
 
 Now we look at the running time of the FPTAS algorithm. 
 
-Note that the dynimic programming runs in $O(n^2 \cdot nV)$, where $V$ is the maximal value of the items. In the FPTAS, we round the values to $\lfloor v_i / K \rfloor$, thus the running time of the FPTAS is 
+Note that the dynimic programming runs in $O(n^2 \cdot nV)$, where $V$ is the maximal value of the items. In the FPTAS, we round the values to $\lfloor v_i / K \rfloor$, thus the running time of the FPTAS is
 
 $$O(n^2 \cdot \lfloor V/K\rfloor) = O(n^2 \cdot \lfloor n/\epsilon \rfloor).$$
