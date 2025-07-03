@@ -23,6 +23,8 @@ We use an example to illustrate this approach.
 
 Given a $m$ facilities and $n$ cities. Each facility $i$ has an openning cost $f_i$, and each city $j$ has a connection cost $c_{i,j}$, if $j$ is connnected to facility $i$. The problem is to determine a set of open facilities and to connect all cities, such that the total opening cost plus the total connection cost is minimized.
 
+{{< figure src="facility-location.gif" width="400px" class="text-center">}}
+
 The problem can be formulated as the following integer programming.
 
 {{<katex>}}
