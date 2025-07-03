@@ -1,5 +1,5 @@
 ---
-weight: 440
+weight: 450
 title: "Newton's Method"
 description: ""
 icon: "article"
