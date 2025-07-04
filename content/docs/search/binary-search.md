@@ -10,7 +10,7 @@ toc: true
 katex: true
 ---
 
-Binary search is an efficient algorithm for finding an target value from a sorted list of numbers. It is a **[divide and conquer algorithm](docs/divide-conquer)**, which repeatedly divides the search interval in half until the target value is found or the interval is empty.
+Binary search is an efficient algorithm for finding a target value from a sorted list of numbers. It is a **[divide and conquer algorithm](docs/divide-conquer)**, which repeatedly divides the search interval in half until the target value is found or the interval is empty.
 
 To illustrate this algorithm, we consider the following example.
 
